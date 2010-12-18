@@ -54,12 +54,15 @@ class Route {
 	}
 
 	private function run(){
+		$classfile = CONTROLLER_DIR . "{$this->class}.php";
+		if( !file_exists( $classfile ) ){
+			throw new Exception( ROUTE_ERROR_NOTFOUND );
+		}
+		require_once( $classfile );
 		if( !method_exists( $this->class, $this->method ) ){
 			throw new Exception( ROUTE_ERROR_NOTFOUND );
 		}
 		$inst = new $this->class;
 		$inst->{$this->method}( $this->args );
 	}
-
 }
-
