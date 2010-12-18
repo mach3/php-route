@@ -20,7 +20,7 @@ class Route {
 	private $method = "index";
 	private $args = array();
 
-	private $routeChars = "/^[a-zA-Z0-9\-\.\/]*$/";
+	private $routeChars = "/^[a-zA-Z0-9\-\.\/_]*$/";
 	private $routeDelimiter = "/";
 
 	public function Route(){
