@@ -3,6 +3,7 @@
 //ini_set( "display_errors", "On" );
 
 // directories
+define( "ROUTE_ROOT_DIR", dirname( $_SERVER["PHP_SELF"] ) . "/" );
 define( "ROUTE_INCLUDE_DIR", "./include/" );
 define( "ROUTE_MODEL_DIR", "./model/" );
 define( "ROUTE_CONTROLLER_DIR", "./controller/" );
