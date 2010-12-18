@@ -1,12 +1,12 @@
 <?php
 
-ini_set( "display_errors", "On" );
+//ini_set( "display_errors", "On" );
 
 // directories
-define( "INCLUDE_DIR", "./include/" );
-define( "MODEL_DIR", "./model/" );
-define( "CONTROLLER_DIR", "./controller/" );
-define( "VIEW_DIR", "./view/" );
+define( "ROUTE_INCLUDE_DIR", "./include/" );
+define( "ROUTE_MODEL_DIR", "./model/" );
+define( "ROUTE_CONTROLLER_DIR", "./controller/" );
+define( "ROUTE_VIEW_DIR", "./view/" );
 
 // errors
 define( "ROUTE_ERROR_INVALID_PARAMS", "invalid parameter" );
@@ -24,11 +24,11 @@ class Route {
 
 	public function Route(){
 		// include resources
-		if( is_dir( INCLUDE_DIR ) ){
-			$d = opendir( INCLUDE_DIR );
+		if( is_dir( ROUTE_INCLUDE_DIR ) ){
+			$d = opendir( ROUTE_INCLUDE_DIR );
 			while( ($file = readdir($d)) !== false ){
 				if( preg_match( "/^[^\._].+(\.php)$/", $file ) ){
-					require_once( INCLUDE_DIR . $file );
+					require_once( ROUTE_INCLUDE_DIR . $file );
 				}
 			}
 		}
@@ -54,7 +54,7 @@ class Route {
 	}
 
 	private function run(){
-		$classfile = CONTROLLER_DIR . "{$this->class}.php";
+		$classfile = ROUTE_CONTROLLER_DIR . "{$this->class}.php";
 		if( !file_exists( $classfile ) ){
 			throw new Exception( ROUTE_ERROR_NOTFOUND );
 		}
