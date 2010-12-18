@@ -63,22 +63,3 @@ class Route {
 
 }
 
-
-echo "<pre>";
-
-try{
-	new Route;
-}catch( Exception $e ){
-	die( $e->getMessage() );
-}
-
-
-
-class Home{
-	public function index(){
-
-	}
-}
-
-
-
