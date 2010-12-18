@@ -59,6 +59,9 @@ class Route {
 		if( !file_exists( $classfile ) ){
 			throw new Exception( ROUTE_ERROR_NOTFOUND );
 		}
+		if( preg_match( "/^_/", $this->method ) ){
+			throw new Exception( ROUTE_ERROR_NOTFOUND );
+		}
 		require_once( $classfile );
 		if( !method_exists( $this->class, $this->method ) ){
 			throw new Exception( ROUTE_ERROR_NOTFOUND );
